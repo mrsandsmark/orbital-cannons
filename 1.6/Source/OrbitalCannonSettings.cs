@@ -177,6 +177,8 @@ public class BuildableOrbitalCannon: Mod
         ThingDef newAmmoDef = DefDatabase<ThingDef>.GetNamed(ammoDefName, errorOnFail: false);
         refuelableComp.fuelFilter.SetDisallowAll();
         refuelableComp.fuelFilter.SetAllow(newAmmoDef, true);
+        refuelableComp.fuelCapacity = settings.gaussCannon_Magazine;
+        Turret_GaussCannonReal.building.turretBurstCooldownTime = settings.gaussCannon_Firerate;
         Log.Message($"Successfully updated Turret_GaussCannonReal fuelFilter to {newAmmoDef}");
         //##########################################################
         CompProperties_Power powerComp = Turret_GaussCannonReal.comps.OfType<CompProperties_Power>().FirstOrDefault();
@@ -194,6 +196,7 @@ public class BuildableOrbitalCannon: Mod
         ThingDef newAmmoDef2 = DefDatabase<ThingDef>.GetNamed(ammoDefName2, errorOnFail: false);
         refuelableComp2.fuelFilter.SetDisallowAll();
         refuelableComp2.fuelFilter.SetAllow(newAmmoDef2, true);
+        refuelableComp2.fuelCapacity = settings.gaussAutoCannon_Magazine;   
         Log.Message($"Successfully updated Turret_GaussCannon fuelFilter to {newAmmoDef2}");
         //###########################################################
         CompProperties_Power powerComp2 = Turret_GaussCannon.comps.OfType<CompProperties_Power>().FirstOrDefault();
@@ -211,6 +214,7 @@ public class BuildableOrbitalCannon: Mod
         ThingDef newAmmoDef3 = DefDatabase<ThingDef>.GetNamed(ammoDefName3, errorOnFail: false);
         refuelableComp3.fuelFilter.SetDisallowAll();
         refuelableComp3.fuelFilter.SetAllow(newAmmoDef3, true);
+        refuelableComp3.fuelCapacity = settings.gaussCIWS_Magazine;
         Log.Message($"Successfully updated Turret_GaussCannonReal fuelFilter to {newAmmoDef3}");
         //###########################################################
         CompProperties_Power powerComp3 = Turret_Gauss.comps.OfType<CompProperties_Power>().FirstOrDefault();
