@@ -3,7 +3,7 @@
  <ModMetaData>
 	<name>Buildable Orbital Cannon</name>
 	<author>Mr.Wireman</author>
-    <packageId>mrwireman.gausscannon</packageId>
+    <packageId>mrwireman.gausscannon.dev</packageId>
 	<supportedVersions>
 	<li>1.6</li>
 	</supportedVersions>
