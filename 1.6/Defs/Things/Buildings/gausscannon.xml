@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<Defs>
+  <ThingDef ParentName="BuildingBase" Name="GaussCannonReal" Abstract="True"> 
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Security/GaussCannon_base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(9, 9)</drawSize>
+      <drawOffset>(0,0,-0.1)</drawOffset>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(1.5,0.35,1.4)</volume>
+        <offset>(0,0,-0.05)</offset>
+      </shadowData>
+    </graphicData>    
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(9,9)</size>
+    <statBases>
+      <MaxHitPoints>380</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>15000</WorkToBuild>
+      <Mass>100</Mass>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretTopDrawSize>13</turretTopDrawSize>
+      <turretTopOffset>(-0.2, 1)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+    </placeWorkers>
+    <designationHotKey>Misc3</designationHotKey>    
+    <uiIconScale>0.95</uiIconScale>
+    <comps>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="GaussCannonReal">
+    <defName>Turret_GaussCannonReal</defName>
+    <label>GaussCannon</label>
+    <description>A heavy automatic turret. Its large-caliber shells do heavy damage over significant ranges, but its barrel must be refurbished after use. It cannot fire at close-up targets, and may explode when damaged.</description>
+    <uiIconPath>Things/Building/Security/GaussCannon_Icon</uiIconPath>
+    <techLevel>Ultra</techLevel>
+    <statBases>
+      <ShootingAccuracyTurret>1</ShootingAccuracyTurret> <!-- like level 8 human shooter -->
+    </statBases>
+    <costList>
+      <Steel>900</Steel>
+      <Plasteel>100</Plasteel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+      <ComponentSpacer>6</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Ammunition left</fuelLabel>
+        <fuelGizmoLabel>Magazine</fuelGizmoLabel>
+        <outOfFuelMessage>Need more HE Shells</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Shell_HighExplosive</li></thingDefs></fuelFilter>
+        <fuelCapacity>10</fuelCapacity>       <!-- 30 bursts -->
+        <fuelMultiplier>1</fuelMultiplier>  <!-- 2 steel per burst, 180 per full rearm -->
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <building>
+      <turretGunDef>Gun_GaussCannonReal</turretGunDef>
+      <turretBurstCooldownTime>5</turretBurstCooldownTime>
+    </building>
+    <designatorDropdown>GravShipCannons</designatorDropdown>
+    <researchPrerequisites>
+	  <li>GravShipResearch</li>
+	</researchPrerequisites>
+  </ThingDef>
+
+<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_AntigrainGravship</defName>
+    <label>antigrain warhead</label>
+    <graphicData>
+      <texPath>Things/Projectile/ShellAntigrainWarhead</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>BombSuper</damageDef>
+      <speed>200</speed>
+      <explosionRadius>14.9</explosionRadius>
+      <explosionChanceToStartFire>0.8</explosionChanceToStartFire>
+      <explosionDamageFalloff>true</explosionDamageFalloff>
+      <explosionEffect>GiantExplosion</explosionEffect>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>Explosion_GiantBomb</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <preExplosionSpawnSingleThingDef>CraterMedium</preExplosionSpawnSingleThingDef>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_GaussCannonReal</defName>
+    <label>GaussCannon</label>
+    <description>A self-loading large-bore cannon designed to attach to a turret.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/GaussCannon_Turret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <RangedWeapon_Cooldown>960</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>40</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_AntigrainGravship</defaultProjectile>
+        <forcedMissRadius>1</forcedMissRadius>
+        <warmupTime>5</warmupTime>
+        <minRange>30</minRange>
+        <range>56</range>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Shot_Autocannon</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>40</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+</Defs>

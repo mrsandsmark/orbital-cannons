@@ -1,0 +1,30 @@
+<LanguageData>
+<OC_Menu>Customize Orbital Cannons</OC_Menu>
+<OC_Default>Default Settings</OC_Default>
+<OC_ApplySettingsNow>Apply Settings Now</OC_ApplySettingsNow>
+<OC_GaussCannon>9x9 Gauss Cannon Settings</OC_GaussCannon>
+<OC_GaussPower>Gauss Cannon Powerusage</OC_GaussPower>
+<OC_GaussRange>Gauss Cannon Range</OC_GaussRange>
+<OC_GaussFirerate>Gauss Cannon Cooldown</OC_GaussFirerate>
+<OC_GaussProjectile>Gauss Cannon Projectile</OC_GaussProjectile>
+<OC_GaussAmmo>Gauss Cannon Ammo</OC_GaussAmmo>
+<OC_GaussMagazine>Gauss Cannon Magazine Size</OC_GaussMagazine>
+<OC_GaussBurst>Gauss Cannon Burst Amount</OC_GaussBurst>
+<OC_AutoCannonAmmo>AutoCannon Ammo</OC_AutoCannonAmmo>
+<OC_AutoCannonProjectile>AutoCannon Projectile</OC_AutoCannonProjectile>
+<OC_AutoCannon>AutoCannon Settings</OC_AutoCannon>
+<OC_AutoCannonPower>AutoCannon Powerusage</OC_AutoCannonPower>
+<OC_AutoCannonRange>AutoCannon Range</OC_AutoCannonRange>
+<OC_AutoCannonFirerate>AutoCannon Firerate</OC_AutoCannonFirerate>
+<OC_AutoCannonMagazine>AutoCannon Magazine Size</OC_AutoCannonMagazine>
+<OC_AutoCannonBurst>AutoCannon Burst Amount</OC_AutoCannonBurst>
+<OC_CIWSProjectile>CIWS Projectile</OC_CIWSProjectile>
+<OC_CIWSAmmo>CIWS Ammo</OC_CIWSAmmo>
+<OC_CIWS>CIWS Settings</OC_CIWS>
+<OC_CIWSPower>CIWS Powerusage</OC_CIWSPower>
+<OC_CIWSRange>CIWS Range</OC_CIWSRange>
+<OC_CIWSFirerate>CIWS Firerate</OC_CIWSFirerate>
+<OC_CIWSMagazine>CIWS Magazine Size</OC_CIWSMagazine>
+<OC_CIWSBurst>CIWS Burst Amount</OC_CIWSBurst>
+
+</LanguageData>

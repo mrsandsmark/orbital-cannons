@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+<Operation Class="PatchOperationFindMod">
+<mods>
+  <li>Reel's Turret Pipeline</li>
+</mods>
+  <match Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Turret_Gauss" or defName="Turret_GaussCannon" or defName="Turret_GaussCannonReal"] /comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs/li</xpath>
+    <value>
+        <li>ReelTurretAmmo</li>
+    </value>
+  </match>
+</Operation>
+</Patch>

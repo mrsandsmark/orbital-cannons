@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<Defs>
+
+  <ThingDef ParentName="BuildingBase" Name="OrbitalBeam" Abstract="True"> 
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Security/GaussCannon_base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3, 3)</drawSize>
+      <drawOffset>(0,0,-0.1)</drawOffset>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(1.5,0.35,1.4)</volume>
+        <offset>(0,0,-0.05)</offset>
+      </shadowData>
+    </graphicData>    
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(3,3)</size>
+    <statBases>
+      <MaxHitPoints>380</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>15000</WorkToBuild>
+      <Mass>100</Mass>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretTopDrawSize>4</turretTopDrawSize>
+      <turretTopOffset>(0, 0.3)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <!--<li>PlaceWorker_ShowTurretRadius</li>-->
+    </placeWorkers>
+    <designationHotKey>Misc3</designationHotKey>    
+    <uiIconScale>0.95</uiIconScale>
+    <comps>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="OrbitalBeam">
+    <defName>OrbitalBeam_Turret</defName>
+    <label>Orbital Beam</label>
+    <description>A heavy automatic turret. Its large-caliber shells do heavy damage over significant ranges, but its barrel must be refurbished after use. It cannot fire at close-up targets, and may explode when damaged.</description>
+    <uiIconPath>Things/Building/Security/OrbitalBeam_Icon</uiIconPath>
+    <techLevel>Ultra</techLevel>
+    <statBases>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret> <!-- like level 8 human shooter -->
+    </statBases>
+    <costList>
+      <Steel>700</Steel>
+      <Plasteel>80</Plasteel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>5.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>2000</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <building>
+      <turretGunDef>Gun_OrbitalBeam</turretGunDef>
+      <turretBurstCooldownTime>1</turretBurstCooldownTime>
+    </building>
+    <designatorDropdown>GravShipCannons</designatorDropdown>
+    <researchPrerequisites>
+	  <li>GravShipResearch</li>
+	</researchPrerequisites>
+  </ThingDef>
+<!--
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_GravshipBeam</defName>
+    <label>beam repeater laser</label>
+    <thingClass>Beam</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>BeamBypassShields</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <beamMoteDef>Mote_BeamRepeaterLaser</beamMoteDef>
+      <beamStartOffset>0.5</beamStartOffset>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+    </projectile>
+    </ThingDef>
+-->
+<!--
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_OrbitalBeam</defName>
+    <label>GravShipCannon</label>
+    <description>A self-loading large-bore cannon designed to attach to a turret.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/OrbitalBeam_Turret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>0.9</AccuracyShort>
+      <AccuracyMedium>0.8</AccuracyMedium>
+      <AccuracyLong>0.7</AccuracyLong>
+      <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>40</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Bullet_GravshipBeam</defaultProjectile>
+        <warmupTime>4</warmupTime>
+        <range>24</range>
+        <burstShotCount>10</burstShotCount>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>18</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+-->
+<ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_OrbitalBeam</defName>
+    <label>GravShipCannon</label>
+    <description>A self-loading large-bore cannon designed to attach to a turret.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/OrbitalBeam_Turret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>0.9</AccuracyShort>
+      <AccuracyMedium>0.8</AccuracyMedium>
+      <AccuracyLong>0.7</AccuracyLong>
+      <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>40</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_ShootBeam</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.0</warmupTime>
+        <range>50</range>
+        <minRange>5</minRange>
+        <beamFullWidthRange>7</beamFullWidthRange>
+        <burstShotCount>5</burstShotCount>
+        <showBurstShotStats>false</showBurstShotStats>
+        <beamWidth>6</beamWidth>
+        <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+        <beamDamageDef>Beam</beamDamageDef>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+        <beamFleckChancePerTick>0.32</beamFleckChancePerTick>
+        <beamMaxDeviation>1.5</beamMaxDeviation>
+        <beamCurvature>0.6</beamCurvature>
+        <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
+        <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.85</beamFireSizeRange>
+        <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+        <beamStartOffset>0.8</beamStartOffset>
+        <highlightColor>(1,1,1,1)</highlightColor>
+        <secondaryHighlightColor>(0.5,0.5,0.5,1)</secondaryHighlightColor>
+        <beamTargetsGround>true</beamTargetsGround>
+        <beamHitsNeighborCells>true</beamHitsNeighborCells>
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(0, 0)</li>
+            <li>(0.65, 0.4)</li>
+            <li>(1, 0.75)</li>
+          </points>
+        </beamLineFleckChanceCurve>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>BeamGraserGun</li>
+    </weaponTags>
+    <tools>
+      <li>
+        <label>barrel</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+</Defs>

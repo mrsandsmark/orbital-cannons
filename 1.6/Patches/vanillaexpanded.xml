@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+<Operation Class="PatchOperationFindMod">
+<mods>
+  <li>Vanilla Expanded Framework</li>
+</mods>
+  <match Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Gun_GaussCannonReal" or defName="Gun_AntiShipBeam"] /verbs/li/range</xpath>
+    <value>
+        <range>124</range>
+    </value>
+  </match>
+</Operation>
+</Patch>
