@@ -31,6 +31,16 @@ public class BuildableOrbitalCannon: Mod
     private string gaussCIWS_FirerateBuffer;
     private string gaussCIWS_MagazineBuffer;
     private string gaussCIWS_BurstBuffer;
+    //Orbital Beam settings
+    private string gaussBigBeam_PowerusageBuffer;
+    private string gaussBigBeam_RangeBuffer;
+    private string gaussBigBeam_FirerateBuffer;
+    private string gaussBigBeam_BurstBuffer;
+    //Small Beam settings
+    private string gaussSmallBeam_PowerusageBuffer;
+    private string gaussSmallBeam_RangeBuffer;
+    private string gaussSmallBeam_FirerateBuffer;
+    private string gaussSmallBeam_BurstBuffer;
 
 
 
@@ -124,6 +134,24 @@ public class BuildableOrbitalCannon: Mod
         //SettingsWidgets.CreateSettingsDropdown(listing_Standard, "OC_CIWSProjectile".Translate(), settings.gaussCIWS_Projectile, v => settings.gaussCIWS_Projectile = v, settings.gaussCIWS_Projectiles.ToArray());
         SettingsWidgets.CreateSettingsDropdown(listing_Standard, "OC_CIWSAmmo".Translate(), settings.gaussCIWS_Ammotype, v => settings.gaussCIWS_Ammotype = v, settings.gaussCIWS_Ammotypes.ToArray());
         SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_CIWSMagazine".Translate(), ref settings.gaussCIWS_Magazine, ref gaussCIWS_MagazineBuffer, 1f, 500f, (float value) => $"{value:F0}");
+        listing_Standard.GapLine();
+        Text.Font = GameFont.Medium;
+        listing_Standard.Label("OC_BigBeam".Translate(), -1f);
+        Text.Font = GameFont.Small;
+        listing_Standard.GapLine();
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_BigBeamPower".Translate(), ref settings.gaussBigBeam_Powerusage, ref gaussBigBeam_PowerusageBuffer, 0f, 4000f, (float value) => $"{value:F0}");
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_BigBeamRange".Translate(), ref settings.gaussBigBeam_Range, ref gaussBigBeam_RangeBuffer, 1f, maxRange, (float value) => $"{value:F0}");
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_BigBeamFirerate".Translate(), ref settings.gaussBigBeam_Firerate, ref gaussBigBeam_FirerateBuffer, 1f, 100f, (float value) => $"{value:F0}");
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_BigBeamBurst".Translate(), ref settings.gaussBigBeam_Burst, ref gaussBigBeam_BurstBuffer, 1f, 100f, (float value) => $"{value:F0}");
+        listing_Standard.GapLine();
+        Text.Font = GameFont.Medium;
+        listing_Standard.Label("OC_SmallBeam".Translate(), -1f);
+        Text.Font = GameFont.Small;
+        listing_Standard.GapLine();
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_SmallBeamPower".Translate(), ref settings.gaussSmallBeam_Powerusage, ref gaussSmallBeam_PowerusageBuffer, 0f, 4000f, (float value) => $"{value:F0}");
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_SmallBeamRange".Translate(), ref settings.gaussSmallBeam_Range, ref gaussSmallBeam_RangeBuffer, 1f, maxRange, (float value) => $"{value:F0}");
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_SmallBeamFirerate".Translate(), ref settings.gaussSmallBeam_Firerate, ref gaussSmallBeam_FirerateBuffer, 1f, 100f, (float value) => $"{value:F0}");
+        SettingsWidgets.CreateSettingsSlider(listing_Standard, "OC_SmallBeamBurst".Translate(), ref settings.gaussSmallBeam_Burst, ref gaussSmallBeam_BurstBuffer, 1f, 100f, (float value) => $"{value:F0}");
         listing_Standard.End();
         Widgets.EndScrollView();
         base.DoSettingsWindowContents(inRect);
@@ -136,10 +164,12 @@ public class BuildableOrbitalCannon: Mod
         if (ModsConfig.IsActive("OskarPotocki.VanillaFactionsExpanded.Core"))
         {
             settings.gaussCannon_Range = 126f;
+            settings.gaussBigBeam_Range = 126f;
         }
         else
         {
             settings.gaussCannon_Range = 56f;
+            settings.gaussBigBeam_Range = 56f;
         }
         settings.gaussCannon_Firerate = 5f;
         //settings.gaussCannon_Projectile = "Bullet_AntigrainGravship";
@@ -162,10 +192,20 @@ public class BuildableOrbitalCannon: Mod
         settings.gaussCIWS_Ammotype = "Steel";
         settings.gaussCIWS_Magazine = 100f;
         settings.gaussCIWS_Burst = 10f;
+        //Big Beam settings
+        settings.gaussBigBeam_Powerusage = 4000f;
+        settings.gaussBigBeam_Firerate = 22f;
+        settings.gaussBigBeam_Burst = 5f;
+        //Small Beam settings
+        settings.gaussSmallBeam_Powerusage = 2000f;
+        settings.gaussSmallBeam_Range = 50.9f;
+        settings.gaussSmallBeam_Firerate = 22f;
+        settings.gaussSmallBeam_Burst = 5f;
     }
     public static void ApplySettingsNow()
     {
         //Turret = Power, Magazine, AmmoType and Cooldown
+        //########################################################## Gauss Cannon
         ThingDef Turret_GaussCannonReal = OCDefOfs.Turret_GaussCannonReal;
         if (Turret_GaussCannonReal == null)
         {
@@ -175,15 +215,16 @@ public class BuildableOrbitalCannon: Mod
         CompProperties_Refuelable refuelableComp = Turret_GaussCannonReal.comps.OfType<CompProperties_Refuelable>().FirstOrDefault();
         string ammoDefName = settings.gaussCannon_Ammotype;
         ThingDef newAmmoDef = DefDatabase<ThingDef>.GetNamed(ammoDefName, errorOnFail: false);
+
         refuelableComp.fuelFilter.SetDisallowAll();
         refuelableComp.fuelFilter.SetAllow(newAmmoDef, true);
         refuelableComp.fuelCapacity = settings.gaussCannon_Magazine;
         Turret_GaussCannonReal.building.turretBurstCooldownTime = settings.gaussCannon_Firerate;
         Log.Message($"Successfully updated Turret_GaussCannonReal fuelFilter to {newAmmoDef}");
-        //##########################################################
+        
         CompProperties_Power powerComp = Turret_GaussCannonReal.comps.OfType<CompProperties_Power>().FirstOrDefault();
         powerComp.idlePowerDraw = settings.gaussCannon_Powerusage;
-        //##########################################################
+        //########################################################## Autocannon
 
         ThingDef Turret_GaussCannon = OCDefOfs.Turret_GaussCannon;
         if (Turret_GaussCannon == null)
@@ -194,14 +235,15 @@ public class BuildableOrbitalCannon: Mod
         CompProperties_Refuelable refuelableComp2 = Turret_GaussCannon.comps.OfType<CompProperties_Refuelable>().FirstOrDefault();
         string ammoDefName2 = settings.gaussAutoCannon_Ammotype;
         ThingDef newAmmoDef2 = DefDatabase<ThingDef>.GetNamed(ammoDefName2, errorOnFail: false);
+
         refuelableComp2.fuelFilter.SetDisallowAll();
         refuelableComp2.fuelFilter.SetAllow(newAmmoDef2, true);
         refuelableComp2.fuelCapacity = settings.gaussAutoCannon_Magazine;   
         Log.Message($"Successfully updated Turret_GaussCannon fuelFilter to {newAmmoDef2}");
-        //###########################################################
+
         CompProperties_Power powerComp2 = Turret_GaussCannon.comps.OfType<CompProperties_Power>().FirstOrDefault();
         powerComp2.idlePowerDraw = settings.gaussAutoCannon_Powerusage;
-        //##########################################################
+        //########################################################## CIWS
 
         ThingDef Turret_Gauss = OCDefOfs.Turret_Gauss;
         if (Turret_Gauss == null)
@@ -212,16 +254,38 @@ public class BuildableOrbitalCannon: Mod
         CompProperties_Refuelable refuelableComp3 = Turret_Gauss.comps.OfType<CompProperties_Refuelable>().FirstOrDefault();
         string ammoDefName3 = settings.gaussCIWS_Ammotype;
         ThingDef newAmmoDef3 = DefDatabase<ThingDef>.GetNamed(ammoDefName3, errorOnFail: false);
+
         refuelableComp3.fuelFilter.SetDisallowAll();
         refuelableComp3.fuelFilter.SetAllow(newAmmoDef3, true);
         refuelableComp3.fuelCapacity = settings.gaussCIWS_Magazine;
         Log.Message($"Successfully updated Turret_GaussCannonReal fuelFilter to {newAmmoDef3}");
-        //###########################################################
+
         CompProperties_Power powerComp3 = Turret_Gauss.comps.OfType<CompProperties_Power>().FirstOrDefault();
         powerComp3.idlePowerDraw = settings.gaussCIWS_Powerusage;
-        //##########################################################
-    
+        //########################################################## Big Beam
+
+        ThingDef AntiShipBeam_Turret = OCDefOfs.AntiShipBeam_Turret;
+        if (AntiShipBeam_Turret == null)
+        {
+            Log.Error("Gun_AntiShipBeam not found in DefOfs!");
+            return;
+        }
+        CompProperties_Power powerComp4 = AntiShipBeam_Turret.comps.OfType<CompProperties_Power>().FirstOrDefault();
+        powerComp4.idlePowerDraw = settings.gaussBigBeam_Powerusage;
+        //########################################################## Small Beam
+
+        ThingDef OrbitalBeam_Turret = OCDefOfs.OrbitalBeam_Turret;
+        if (OrbitalBeam_Turret == null)
+        {
+            Log.Error("Gun_AntiShipBeam not found in DefOfs!");
+            return;
+        }
+        CompProperties_Power powerComp5 = OrbitalBeam_Turret.comps.OfType<CompProperties_Power>().FirstOrDefault();
+        powerComp5.idlePowerDraw = settings.gaussSmallBeam_Powerusage;
+
         //Gun = Firerate, Projectile and Range
+        //########################################################## Gauss Cannon
+
         ThingDef Gun_GaussCannonReal = OCDefOfs.Gun_GaussCannonReal;
         if (Gun_GaussCannonReal == null)
         {
@@ -235,7 +299,7 @@ public class BuildableOrbitalCannon: Mod
         rangeVerb.ticksBetweenBurstShots = (int)settings.gaussCannon_Firerate;
         rangeVerb.burstShotCount = (int)settings.gaussCannon_Burst;
         //rangeVerb.defaultProjectile = newProjectileDef;
-        //##########################################################
+        //########################################################## Autocannon
 
         ThingDef Gun_GravShipTurret = OCDefOfs.Gun_GravShipTurret;
         if (Gun_GravShipTurret == null)
@@ -247,10 +311,10 @@ public class BuildableOrbitalCannon: Mod
         //string projectileDefName2 = settings.gaussAutoCannon_Projectile;
         //ThingDef newProjectileDef2 = DefDatabase<ThingDef>.GetNamed(projectileDefName2, errorOnFail: false);
         rangeVerb2.range = settings.gaussAutoCannon_Range;
-        rangeVerb2.ticksBetweenBurstShots = (int)settings.gaussCannon_Firerate;
+        rangeVerb2.ticksBetweenBurstShots = (int)settings.gaussAutoCannon_Firerate;
         rangeVerb2.burstShotCount = (int)settings.gaussAutoCannon_Burst;
         //rangeVerb2.defaultProjectile = newProjectileDef2;
-        //##########################################################
+        //########################################################## CIWS
 
         ThingDef Gun_GravShipCannon = OCDefOfs.Gun_GravShipCannon;
         if (Gun_GravShipCannon == null)
@@ -265,7 +329,31 @@ public class BuildableOrbitalCannon: Mod
         rangeVerb3.ticksBetweenBurstShots = (int)settings.gaussCIWS_Firerate;
         rangeVerb3.burstShotCount = (int)settings.gaussCIWS_Burst;
         //rangeVerb3.defaultProjectile = newProjectileDef3;
+        //########################################################## Big Beam
 
+        ThingDef Gun_AntiShipBeam = OCDefOfs.Gun_AntiShipBeam;
+        if (Gun_AntiShipBeam == null)
+        {
+            Log.Error("Gun_AntiShipBeam not found in DefOfs!");
+            return;
+        }
+        VerbProperties rangeVerb4 = Gun_AntiShipBeam.Verbs?.FirstOrDefault(v => v.verbClass == typeof(Verb_ShootBeam));
+        rangeVerb4.range = settings.gaussBigBeam_Range;
+        rangeVerb4.burstShotCount = (int)settings.gaussBigBeam_Burst;
+        rangeVerb4.ticksBetweenBurstShots = (int)settings.gaussBigBeam_Firerate;
+
+        //########################################################## Small Beam
+
+        ThingDef Gun_OrbitalBeam = OCDefOfs.Gun_OrbitalBeam;
+        if (Gun_OrbitalBeam == null)
+        {
+            Log.Error("Gun_OrbitalBeam not found in DefOfs!");
+            return;
+        }
+        VerbProperties rangeVerb5 = Gun_OrbitalBeam.Verbs?.FirstOrDefault(v => v.verbClass == typeof(Verb_ShootBeam));
+        rangeVerb5.range = settings.gaussSmallBeam_Range;
+        rangeVerb5.burstShotCount = (int)settings.gaussSmallBeam_Burst;
+        rangeVerb5.ticksBetweenBurstShots = (int)settings.gaussSmallBeam_Firerate;
     }
 
     public override string SettingsCategory()

@@ -42,13 +42,15 @@ public class CannonSettings : Verse.ModSettings
         //Big Beam settings
         public float gaussBigBeam_Powerusage = 4000f;
         public float gaussBigBeam_Range =56f;
-        public float gaussBigBeam_Firerate = 15f;
+        public float gaussBigBeam_Firerate = 22f;
+        public float gaussBigBeam_Burst = 5f;
         //Small Beam settings
         public float gaussSmallBeam_Powerusage = 2000f;
         public float gaussSmallBeam_Range = 50.9f;
-        public float gaussSmallBeam_Firerate = 15f;
+        public float gaussSmallBeam_Firerate = 22f;
+        public float gaussSmallBeam_Burst = 5f;
 
-        public override void ExposeData()
+    public override void ExposeData()
         {
             Scribe_Values.Look(ref gaussCannon_Powerusage, "gaussCannon_Powerusage", 1000f);
             Scribe_Values.Look(ref gaussCannon_Range, "gaussCannon_Range", 56f);
