@@ -22,5 +22,8 @@ public static class OCDefOfs
     //Small Beam
     public static ThingDef OrbitalBeam_Turret;
     public static ThingDef Gun_OrbitalBeam;
+    //Gravship Targeter
+    public static ThingDef GravShipTargeter;
+
 
 }

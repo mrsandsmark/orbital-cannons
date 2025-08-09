@@ -41,7 +41,7 @@ public class CannonSettings : Verse.ModSettings
         public float gaussArtillery_Firerate = 1f;
         //Big Beam settings
         public float gaussBigBeam_Powerusage = 4000f;
-        public float gaussBigBeam_Range =56f;
+        public float gaussBigBeam_Range =51f;
         public float gaussBigBeam_Firerate = 22f;
         public float gaussBigBeam_Burst = 5f;
         //Small Beam settings
