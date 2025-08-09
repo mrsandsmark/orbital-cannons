@@ -159,8 +159,7 @@ public class BuildableOrbitalCannon: Mod
 
     private void SetDefault()
     {
-        // Gauss Cannon settings
-        settings.gaussCannon_Powerusage = 1000f;
+        // Conditional settings based on mod presence
         if (ModsConfig.IsActive("OskarPotocki.VanillaFactionsExpanded.Core"))
         {
             settings.gaussCannon_Range = 126f;
@@ -171,9 +170,23 @@ public class BuildableOrbitalCannon: Mod
             settings.gaussCannon_Range = 56f;
             settings.gaussBigBeam_Range = 56f;
         }
+
+        if (ModsConfig.IsActive("Reel.TurretPipeline"))
+        {
+            settings.gaussCannon_Ammotype = "ReelTurretAmmo";
+            settings.gaussAutoCannon_Ammotype = "ReelTurretAmmo";
+            settings.gaussCIWS_Ammotype = "ReelTurretAmmo";
+        }
+        else
+        {
+            settings.gaussCannon_Ammotype = "Shell_HighExplosive";
+            settings.gaussAutoCannon_Ammotype = "Steel";
+            settings.gaussCIWS_Ammotype = "Steel";
+        }
+        // Gauss Cannon settings
+        settings.gaussCannon_Powerusage = 1000f;
         settings.gaussCannon_Firerate = 5f;
         //settings.gaussCannon_Projectile = "Bullet_AntigrainGravship";
-        settings.gaussCannon_Ammotype = "Shell_HighExplosive";
         settings.gaussCannon_Magazine = 10f;
         //settings.gaussCannon_Burst = 1f;
         // Autocannon settings
@@ -181,7 +194,6 @@ public class BuildableOrbitalCannon: Mod
         settings.gaussAutoCannon_Range = 50.9f;
         settings.gaussAutoCannon_Firerate = 15f;
         //settings.gaussAutoCannon_Projectile = "GravShip_Rocket";
-        settings.gaussAutoCannon_Ammotype = "Steel";
         settings.gaussAutoCannon_Magazine = 50f;
         settings.gaussAutoCannon_Burst = 1f;
         //CIWS settings
@@ -189,7 +201,6 @@ public class BuildableOrbitalCannon: Mod
         settings.gaussCIWS_Range = 50.9f;
         settings.gaussCIWS_Firerate = 10f;
         //settings.gaussCIWS_Projectile = "Bullet_GravShipCannon";
-        settings.gaussCIWS_Ammotype = "Steel";
         settings.gaussCIWS_Magazine = 100f;
         settings.gaussCIWS_Burst = 10f;
         //Big Beam settings
