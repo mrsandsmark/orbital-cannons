@@ -60,7 +60,7 @@
 
   <ThingDef ParentName="GaussCannonReal">
     <defName>Turret_GaussCannonReal</defName>
-    <label>GaussCannon</label>
+    <label>Gauss Cannon</label>
     <description>A heavy automatic turret. Its large-caliber shells do heavy damage over significant ranges, but its barrel must be refurbished after use. It cannot fire at close-up targets, and may explode when damaged.</description>
     <uiIconPath>Things/Building/Security/GaussCannon_Icon</uiIconPath>
     <techLevel>Ultra</techLevel>

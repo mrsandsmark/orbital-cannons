@@ -3,11 +3,11 @@
  <ModMetaData>
 	<name>Buildable Orbital Cannon</name>
 	<author>Mr.Wireman</author>
-    <packageId>mrwireman.gausscannon</packageId>
+    <packageId>mrwireman.gausscannon.dev</packageId>
 	<supportedVersions>
 	<li>1.6</li>
 	</supportedVersions>
-	<modVersion IgnoreIfNoMatchingField="True">1.7</modVersion>
+	<modVersion IgnoreIfNoMatchingField="True">1.8</modVersion>
 	<description>This mod takes the model used for the orbital defence cannons and makes them buildable on your gravship in a smaller scale
 	</description>
 </ModMetaData>
