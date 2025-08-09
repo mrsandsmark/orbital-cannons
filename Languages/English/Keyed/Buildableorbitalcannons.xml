@@ -26,5 +26,15 @@
 <OC_CIWSFirerate>CIWS Firerate</OC_CIWSFirerate>
 <OC_CIWSMagazine>CIWS Magazine Size</OC_CIWSMagazine>
 <OC_CIWSBurst>CIWS Burst Amount</OC_CIWSBurst>
+<OC_BigBeam>BigBeam Settings</OC_BigBeam>
+<OC_BigBeamPower>Big Beam Powerusage</OC_BigBeamPower>
+<OC_BigBeamRange>Big Beam Range</OC_BigBeamRange>
+<OC_BigBeamFirerate>Big Beam Firerate</OC_BigBeamFirerate>
+<OC_BigBeamBurst>Big Beam Burst Amount</OC_BigBeamBurst>
+<OC_SmallBeam>Small Beam Settings</OC_SmallBeam>
+<OC_SmallBeamPower>Small Beam Powerusage</OC_SmallBeamPower>
+<OC_SmallBeamRange>Small Beam Range</OC_SmallBeamRange>
+<OC_SmallBeamFirerate>Small Beam Firerate</OC_SmallBeamFirerate>
+<OC_SmallBeamBurst>Small Beam Burst Amount</OC_SmallBeamBurst>
 
 </LanguageData>
