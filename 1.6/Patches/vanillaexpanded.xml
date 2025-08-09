@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
+<!--
 <Operation Class="PatchOperationFindMod">
 <mods>
   <li>Vanilla Expanded Framework</li>
@@ -11,4 +12,5 @@
     </value>
   </match>
 </Operation>
+-->
 </Patch>

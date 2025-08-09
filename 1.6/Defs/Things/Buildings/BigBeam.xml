@@ -23,8 +23,8 @@
     <rotatable>false</rotatable>
     <size>(9,9)</size>
     <statBases>
-      <MaxHitPoints>380</MaxHitPoints>
-      <Flammability>0.7</Flammability>
+      <MaxHitPoints>900</MaxHitPoints>
+      <Flammability>0</Flammability>
       <WorkToBuild>15000</WorkToBuild>
       <Mass>100</Mass>
       <Beauty>-20</Beauty>
@@ -165,12 +165,39 @@
     <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
     <isRanged>true</isRanged>
     <makesAnimalsFlee>true</makesAnimalsFlee>
-    <defaultDamage>50</defaultDamage>
+    <defaultDamage>100</defaultDamage>
     <defaultArmorPenetration>1</defaultArmorPenetration>
     <buildingDamageFactorImpassable>1</buildingDamageFactorImpassable>
     <buildingDamageFactorPassable>1</buildingDamageFactorPassable>
   </DamageDef>
 
+ <ThingDef ParentName="MoteBase">
+    <defName>Mote_BigBeamBase</defName>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.2</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Mote/BigBeam</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteBeam</shaderType>
+      <shaderParameters>
+        <_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
+        <_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
+        <_ScrollSpeedA>-4 </_ScrollSpeedA>
+        <_ScrollSpeedB>3</_ScrollSpeedB>
+        <_Intensity>2</_Intensity>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
 
 <ThingDef ParentName="BaseWeaponTurret">
     <defName>Gun_AntiShipBeam</defName>
@@ -182,9 +209,9 @@
     </graphicData>
     <statBases>
       <AccuracyTouch>1</AccuracyTouch>
-      <AccuracyShort>0.9</AccuracyShort>
-      <AccuracyMedium>0.8</AccuracyMedium>
-      <AccuracyLong>0.7</AccuracyLong>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
       <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>40</Mass>
@@ -195,22 +222,22 @@
         <verbClass>Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <warmupTime>1.0</warmupTime>
-        <range>56</range>
+        <range>51</range>
         <minRange>15</minRange>
         <beamFullWidthRange>5</beamFullWidthRange>
-        <burstShotCount>5</burstShotCount>
+        <burstShotCount>10</burstShotCount>
         <showBurstShotStats>false</showBurstShotStats>
         <beamWidth>5</beamWidth>
         <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
         <beamDamageDef>SuperBeam</beamDamageDef>
         <soundCastTail>GunTail_Medium</soundCastTail>
         <muzzleFlashScale>50</muzzleFlashScale>
-        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <soundCastBeam>OrbitalBeam</soundCastBeam>
         <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
-        <beamFleckChancePerTick>0.32</beamFleckChancePerTick>
-        <beamMaxDeviation>1.5</beamMaxDeviation>
+        <beamFleckChancePerTick>0.50</beamFleckChancePerTick>
+        <beamMaxDeviation>1.2</beamMaxDeviation>
         <beamCurvature>0.6</beamCurvature>
-        <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
+        <beamMoteDef>Mote_BigBeamBase</beamMoteDef>
         <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
         <beamChanceToStartFire>0.99</beamChanceToStartFire>
         <beamChanceToAttachFire>0.99</beamChanceToAttachFire>

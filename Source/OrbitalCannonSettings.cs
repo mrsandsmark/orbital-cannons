@@ -68,7 +68,7 @@ public class BuildableOrbitalCannon: Mod
         }
         else
         {
-            maxRange = 56f;
+            maxRange = 51f;
         }
     }
 
@@ -167,8 +167,8 @@ public class BuildableOrbitalCannon: Mod
         }
         else
         {
-            settings.gaussCannon_Range = 56f;
-            settings.gaussBigBeam_Range = 56f;
+            settings.gaussCannon_Range = 51f;
+            settings.gaussBigBeam_Range = 51f;
         }
 
         if (ModsConfig.IsActive("Reel.TurretPipeline"))
