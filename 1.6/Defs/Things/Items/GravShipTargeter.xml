@@ -81,7 +81,7 @@
     </apparel>
     <verbs>
       <li>
-        <verbClass>Verb_GaussStrike</verbClass>
+        <verbClass>Verb_Bombardment</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <useableInPocketMaps>false</useableInPocketMaps>
         <warmupTime>3</warmupTime>
@@ -109,17 +109,6 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="OrbitalStrikeBase">
-    <defName>GravshipGaussStrike</defName>
-    <label>bombardment</label>
-    <thingClass>GravshipGaussStrike</thingClass>
-    <comps>
-      <li Class="CompProperties_OrbitalBeam">
-        <width>0.2</width>
-        <color>(255, 20, 20, 242)</color>
-      </li>
-    </comps>
-  </ThingDef>
 <!--
   <ThingDef ParentName="OrbitalUtilityBase">
     <defName>OrbitalTargeterPowerBeam</defName>
