@@ -81,27 +81,12 @@
     </apparel>
     <verbs>
       <li>
-        <verbClass>Verb_GravshipArtillery</verbClass>
+        <verbClass>Verb_GaussStrike</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <useableInPocketMaps>false</useableInPocketMaps>
         <warmupTime>3</warmupTime>
         <ai_AvoidFriendlyFireRadius>23</ai_AvoidFriendlyFireRadius>
         <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
-        <range>44.9</range>
-        <burstShotCount>1</burstShotCount>
-        <soundAiming>OrbitalTargeter_Aiming</soundAiming>
-        <soundCast>OrbitalTargeter_Fire</soundCast>
-        <onlyManualCast>true</onlyManualCast>
-        <targetParams>
-          <canTargetLocations>true</canTargetLocations>
-        </targetParams>
-      </li>
-      <li>
-        <verbClass>Verb_GravshipBeam</verbClass>
-        <hasStandardCommand>true</hasStandardCommand>
-        <useableInPocketMaps>false</useableInPocketMaps>
-        <warmupTime>3</warmupTime>
-        <ai_AvoidFriendlyFireRadius>15</ai_AvoidFriendlyFireRadius>
         <range>44.9</range>
         <burstShotCount>1</burstShotCount>
         <soundAiming>OrbitalTargeter_Aiming</soundAiming>
@@ -120,6 +105,18 @@
         <maxCharges>1</maxCharges>
         <replenishAfterCooldown>true</replenishAfterCooldown>
         <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="OrbitalStrikeBase">
+    <defName>GravshipGaussStrike</defName>
+    <label>bombardment</label>
+    <thingClass>GravshipGaussStrike</thingClass>
+    <comps>
+      <li Class="CompProperties_OrbitalBeam">
+        <width>0.2</width>
+        <color>(255, 20, 20, 242)</color>
       </li>
     </comps>
   </ThingDef>
@@ -191,4 +188,5 @@
     </comps>
   </ThingDef>
   -->
+  
 </Defs>
