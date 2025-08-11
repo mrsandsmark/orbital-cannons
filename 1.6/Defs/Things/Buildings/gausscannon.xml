@@ -24,7 +24,7 @@
     <rotatable>false</rotatable>
     <size>(9,9)</size>
     <statBases>
-      <MaxHitPoints>380</MaxHitPoints>
+      <MaxHitPoints>900</MaxHitPoints>
       <Flammability>0.7</Flammability>
       <WorkToBuild>15000</WorkToBuild>
       <Mass>100</Mass>
