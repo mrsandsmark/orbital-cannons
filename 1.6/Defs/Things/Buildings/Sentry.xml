@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?> 
 
 <Defs>
-  <ThingDef ParentName="BuildingBase" Name="GaussCannonReal" Abstract="True"> 
+  <ThingDef ParentName="BuildingBase" Name="GravShipSentry" Abstract="True"> 
     <thingClass>Building_TurretGun</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <drawHighlight>true</drawHighlight>
     <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
     <graphicData>
-      <texPath>Things/Building/Security/GaussCannon_base</texPath>
+      <texPath>Things/Building/Security/Beam_base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(9, 9)</drawSize>
+      <drawSize>(1, 1)</drawSize>
       <drawOffset>(0,0,-0.1)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
@@ -22,9 +22,9 @@
     <altitudeLayer>Building</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-    <size>(9,9)</size>
+    <size>(1,1)</size>
     <statBases>
-      <MaxHitPoints>900</MaxHitPoints>
+      <MaxHitPoints>190</MaxHitPoints>
       <Flammability>0.7</Flammability>
       <WorkToBuild>15000</WorkToBuild>
       <Mass>100</Mass>
@@ -40,11 +40,12 @@
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
-      <turretTopDrawSize>13</turretTopDrawSize>
-      <turretTopOffset>(-0.2, 1)</turretTopOffset>
+      <turretTopDrawSize>2</turretTopDrawSize>
+      <turretTopOffset>(-0.05, 0.1)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
     </placeWorkers>
     <designationHotKey>Misc3</designationHotKey>    
     <uiIconScale>0.95</uiIconScale>
@@ -58,20 +59,18 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="GaussCannonReal">
-    <defName>Turret_GaussCannonReal</defName>
-    <label>Gauss Cannon</label>
-    <description>A heavy Gauss cannon originally designed for anti-ship use on orbital locations. It is capable of firing powerful projectiles at long ranges that generate enough kinetic energy to equal the destructive power of a AntiGrain Explosion</description>
+  <ThingDef ParentName="GravShipSentry">
+    <defName>Turret_Sentry</defName>
+    <label>Gravship Sentry</label>
+    <description>A heavy automatic sentry gun designed to solve issues with a whole lot of bullets in a short amount of time.</description>
     <uiIconPath>Things/Building/Security/GaussCannon_Icon</uiIconPath>
-    <techLevel>Ultra</techLevel>
     <statBases>
-      <ShootingAccuracyTurret>1</ShootingAccuracyTurret> <!-- like level 8 human shooter -->
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret> <!-- like level 8 human shooter -->
     </statBases>
+    <techLevel>Ultra</techLevel>
     <costList>
-      <Steel>900</Steel>
-      <Plasteel>100</Plasteel>
-      <ComponentIndustrial>12</ComponentIndustrial>
-      <ComponentSpacer>6</ComponentSpacer>
+      <Steel>350</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
     </costList>
     <comps>
       <li Class="CompProperties_Explosive">
@@ -83,16 +82,16 @@
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>1000</basePowerConsumption>
+        <basePowerConsumption>300</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="CompProperties_Refuelable">
-        <fuelLabel>Ammunition left</fuelLabel>
-        <fuelGizmoLabel>Magazine</fuelGizmoLabel>
-        <outOfFuelMessage>Need more HE Shells</outOfFuelMessage>
-        <fuelFilter><thingDefs><li>Shell_HighExplosive</li></thingDefs></fuelFilter>
-        <fuelCapacity>10</fuelCapacity>       <!-- 30 bursts -->
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Steel</li></thingDefs></fuelFilter>
+        <fuelCapacity>100</fuelCapacity>       <!-- 30 bursts -->
         <fuelMultiplier>1</fuelMultiplier>  <!-- 2 steel per burst, 180 per full rearm -->
         <initialFuelPercent>1</initialFuelPercent>
         <autoRefuelPercent>0.5</autoRefuelPercent>
@@ -104,8 +103,8 @@
       </li>
     </comps>
     <building>
-      <turretGunDef>Gun_GaussCannonReal</turretGunDef>
-      <turretBurstCooldownTime>5</turretBurstCooldownTime>
+      <turretGunDef>Gun_GravShipSentry</turretGunDef>
+      <turretBurstCooldownTime>1</turretBurstCooldownTime>
     </building>
     <designatorDropdown>GravShipCannons</designatorDropdown>
     <researchPrerequisites>
@@ -113,41 +112,20 @@
 	</researchPrerequisites>
   </ThingDef>
 
-<ThingDef ParentName="BaseBullet">
-    <defName>Bullet_AntigrainGravship</defName>
-    <label>antigrain warhead</label>
-    <graphicData>
-      <texPath>Things/Projectile/ShellAntigrainWarhead</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>TransparentPostLight</shaderType>
-    </graphicData>
-    <thingClass>Projectile_Explosive</thingClass>
-    <projectile>
-      <damageDef>BombSuper</damageDef>
-      <speed>200</speed>
-      <explosionRadius>14.9</explosionRadius>
-      <explosionChanceToStartFire>0.8</explosionChanceToStartFire>
-      <explosionDamageFalloff>true</explosionDamageFalloff>
-      <explosionEffect>GiantExplosion</explosionEffect>
-      <flyOverhead>true</flyOverhead>
-      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
-      <soundExplode>Explosion_GiantBomb</soundExplode>
-      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
-      <soundAmbient>MortarRound_Ambient</soundAmbient>
-      <preExplosionSpawnSingleThingDef>CraterMedium</preExplosionSpawnSingleThingDef>
-    </projectile>
-  </ThingDef>
-
   <ThingDef ParentName="BaseWeaponTurret">
-    <defName>Gun_GaussCannonReal</defName>
-    <label>GaussCannon</label>
+    <defName>Gun_GravShipSentry</defName>
+    <label>GravShipSentry</label>
     <description>A self-loading large-bore cannon designed to attach to a turret.</description>
     <graphicData>
-      <texPath>Things/Building/Security/GaussCannon_Turret</texPath>
+      <texPath>Things/Building/Security/GaussCannon_Sentry</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
-      <RangedWeapon_Cooldown>960</RangedWeapon_Cooldown>
+      <AccuracyTouch>0.9</AccuracyTouch>
+      <AccuracyShort>0.72</AccuracyShort>
+      <AccuracyMedium>0.66</AccuracyMedium>
+      <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
       <DeteriorationRate>0</DeteriorationRate>
       <Mass>40</Mass>
       <Flammability>0</Flammability>
@@ -155,17 +133,16 @@
     <verbs>
       <li>
         <verbClass>Verb_Shoot</verbClass>
-        <defaultProjectile>Bullet_AntigrainGravship</defaultProjectile>
-        <forcedMissRadius>1</forcedMissRadius>
-        <warmupTime>5</warmupTime>
-        <minRange>30</minRange>
-        <range>56</range>
+        <defaultProjectile>Bullet_LMG</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <minRange>0</minRange>
+        <range>30</range>
         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
-        <burstShotCount>1</burstShotCount>
-        <soundCast>Shot_Autocannon</soundCast>
-        <soundCastTail>GunTail_Heavy</soundCastTail>
-        <muzzleFlashScale>40</muzzleFlashScale>
-        <consumeFuelPerShot>1</consumeFuelPerShot>
+        <burstShotCount>10</burstShotCount>
+        <soundCast>Shot_Minigun</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>12</muzzleFlashScale>
+        <consumeFuelPerShot>0.5</consumeFuelPerShot>
       </li>
     </verbs>
   </ThingDef>

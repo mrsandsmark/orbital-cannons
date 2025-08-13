@@ -199,13 +199,12 @@
 			<turretTopDrawSize>5</turretTopDrawSize>
 	        <turretTopOffset>(-0.1, 0.8)</turretTopOffset>
 		</building>
-		<designatorDropdown>CE_AutoTurrets</designatorDropdown>
 		<placeWorkers>
 			<li>PlaceWorker_TurretTop</li>
 			<li>PlaceWorker_ShowTurretRadius</li>
 		</placeWorkers>
 		<researchPrerequisites>
-			<li>CE_ChargeTurret</li>
+			<li>GravShipResearch</li>
 		</researchPrerequisites>
 	</ThingDef>
 

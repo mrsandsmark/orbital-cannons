@@ -137,7 +137,7 @@
   <ThingDef ParentName="BaseArtilleryWeapon">
     <defName>GravShip_Mortar</defName>
     <label>Grav Ship Artillery</label>
-    <description>Mortar launcher. Lobs bombs over walls. Very inaccurate but long-ranged.</description>
+    <description>Rapid fire manually reloaded artillery cannon, designed for long-range bombardment.</description>
     <recoilPower>3</recoilPower>
     <graphicData>
       <texPath>Things/Building/Security/GaussCannon_Artillery</texPath>
