@@ -102,6 +102,9 @@
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
       </li>
+      <li Class="Orbital_Cannons.CompProperties_RegisterWeapon">
+        <isAntigrain>true</isAntigrain>
+      </li>
     </comps>
     <building>
       <turretGunDef>Gun_GaussCannonReal</turretGunDef>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LanguageData>
+    <OC_BeamNotFound>No beam weapon on gravship</OC_BeamNotFound>
+    <OC_BeamNotOnline>No beam weapon online</OC_BeamNotOnline>
+    <OC_BombardmentNotFound>No bombardment weapon on gravship</OC_BombardmentNotFound>
+    <OC_BombardmentNotOnline>No bombardment weapon online</OC_BombardmentNotOnline>
+    <OC_AntigrainNotFound>No antigrain artillery on gravship</OC_AntigrainNotFound>
+    <OC_AntigrainNotOnline>No antigrain artillery online</OC_AntigrainNotOnline>
+    <OC_ShipNotInSpace>Gravship not in orbit</OC_ShipNotInSpace>
+    <OC_ShipOnMap>Gravship on the same map</OC_ShipOnMap>
+</LanguageData>
