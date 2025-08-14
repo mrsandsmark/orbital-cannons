@@ -88,6 +88,9 @@
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
+      <li Class="Orbital_Cannons.CompProperties_RegisterWeapon">
+        <isBeam>true</isBeam>
+      </li>
     </comps>
     <building>
       <turretGunDef>Gun_AntiShipBeam</turretGunDef>

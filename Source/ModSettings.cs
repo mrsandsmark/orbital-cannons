@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
-[StaticConstructorOnStartup]
-public class CannonSettings : Verse.ModSettings
+namespace Orbital_Cannons
 {
+    [StaticConstructorOnStartup]
+    public class CannonSettings : Verse.ModSettings
+    {
         // Gauss Cannon settings
         public float gaussCannon_Powerusage = 1000f;
         public float gaussCannon_Range = 56;
@@ -50,7 +52,7 @@ public class CannonSettings : Verse.ModSettings
         public float gaussSmallBeam_Firerate = 22f;
         public float gaussSmallBeam_Burst = 5f;
 
-    public override void ExposeData()
+        public override void ExposeData()
         {
             Scribe_Values.Look(ref gaussCannon_Powerusage, "gaussCannon_Powerusage", 1000f);
             Scribe_Values.Look(ref gaussCannon_Range, "gaussCannon_Range", 56f);
@@ -76,6 +78,7 @@ public class CannonSettings : Verse.ModSettings
             Scribe_Values.Look(ref gaussCIWS_Magazine, "gaussCIWS_Magazine", 100f);
             Scribe_Values.Look(ref gaussCIWS_Burst, "gaussCIWS_Burst", 10f);
 
+        }
     }
-    }
+}
         
