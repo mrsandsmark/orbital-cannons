@@ -103,6 +103,9 @@
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
       </li>
+      <li Class="Orbital_Cannons.CompProperties_RegisterWeapon">
+        <isBombardment>true</isBombardment>
+      </li>
     </comps>
     <building>
       <turretGunDef>Gun_GravShipTurret</turretGunDef>

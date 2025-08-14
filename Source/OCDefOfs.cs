@@ -26,5 +26,13 @@ namespace Orbital_Cannons
         public static ThingDef Gun_OrbitalBeam;
         //Gravship Targeter
         public static ThingDef GravShipTargeter;
+
+        public static DamageDef BombSuper;
+
+        public static ThingDef OC_AntigrainBombardment;
+
+        public static SoundDef Explosion_GiantBomb;
+
+        public static EffecterDef GiantExplosion;
     }
 }
