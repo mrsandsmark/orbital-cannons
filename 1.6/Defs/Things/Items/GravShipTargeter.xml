@@ -44,7 +44,7 @@
   <ThingDef ParentName="GravshipUtilityBase">
     <defName>GravShipTargeter</defName>
     <label>Gravship Armament targeter</label>
-    <description>Targeting apparatus for Gravship armaments.</description>
+    <description>Targeting apparatus for gravship bombardments. The transmitter needs some time to recharge after each use.</description>
     <graphicData>
       <texPath>Things/Item/Equipment/WeaponSpecial/OrbitalTargeterBombardment/OrbitalTargeterBombardment</texPath>
       <drawSize>(0.7,0.7)</drawSize>
@@ -81,7 +81,42 @@
     </apparel>
     <verbs>
       <li>
+        <verbClass>Verb_PowerBeam</verbClass>
+        <label>Gravship powerbeam</label>
+        <hasStandardCommand>true</hasStandardCommand>
+        <useableInPocketMaps>false</useableInPocketMaps>
+        <warmupTime>3</warmupTime>
+        <ai_AvoidFriendlyFireRadius>23</ai_AvoidFriendlyFireRadius>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <range>44.9</range>
+        <burstShotCount>1</burstShotCount>
+        <soundAiming>OrbitalTargeter_Aiming</soundAiming>
+        <soundCast>OrbitalTargeter_Fire</soundCast>
+        <onlyManualCast>true</onlyManualCast>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+      <li>
         <verbClass>Verb_Bombardment</verbClass>
+        <label>Gravship bombardment</label>
+        <hasStandardCommand>true</hasStandardCommand>
+        <useableInPocketMaps>false</useableInPocketMaps>
+        <warmupTime>3</warmupTime>
+        <ai_AvoidFriendlyFireRadius>23</ai_AvoidFriendlyFireRadius>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+        <range>44.9</range>
+        <burstShotCount>1</burstShotCount>
+        <soundAiming>OrbitalTargeter_Aiming</soundAiming>
+        <soundCast>OrbitalTargeter_Fire</soundCast>
+        <onlyManualCast>true</onlyManualCast>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+      <li>
+        <verbClass>Orbital_Cannons.Verb_AntigrainBombardment</verbClass>
+        <label>Gravship antigrain strike</label>
         <hasStandardCommand>true</hasStandardCommand>
         <useableInPocketMaps>false</useableInPocketMaps>
         <warmupTime>3</warmupTime>
@@ -99,14 +134,22 @@
     </verbs>
     <comps>
       <li Class="CompProperties_ApparelReloadable">
+        <compClass>Orbital_Cannons.CompApparelReloadableTargeter</compClass>
         <hotKey>Misc4</hotKey>
-        <baseReloadTicks>3600</baseReloadTicks>
+        <baseReloadTicks>60000</baseReloadTicks>
         <ammoCountPerCharge>1</ammoCountPerCharge>
         <maxCharges>1</maxCharges>
         <replenishAfterCooldown>true</replenishAfterCooldown>
         <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="Orbital_Cannons.BombardmentExtension">
+        <beamVerb>RimWorld.Verb_PowerBeam</beamVerb>
+        <bombardmentVerb>RimWorld.Verb_Bombardment</bombardmentVerb>
+        <antigrainVerb>Orbital_Cannons.Verb_AntigrainBombardment</antigrainVerb>
+      </li>
+    </modExtensions>
   </ThingDef>
 
 <!--
