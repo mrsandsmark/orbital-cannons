@@ -19,7 +19,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>    
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <size>(9,9)</size>

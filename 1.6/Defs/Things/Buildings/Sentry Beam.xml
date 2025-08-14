@@ -2,7 +2,7 @@
 
 <Defs>
 
-  <ThingDef ParentName="BuildingBase" Name="OrbitalBeam" Abstract="True"> 
+  <ThingDef ParentName="BuildingBase" Name="SentryBeam" Abstract="True"> 
     <thingClass>Building_TurretGun</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <drawHighlight>true</drawHighlight>
@@ -10,7 +10,7 @@
     <graphicData>
       <texPath>Things/Building/Security/Beam_base</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-      <drawSize>(3, 3)</drawSize>
+      <drawSize>(1, 1)</drawSize>
       <drawOffset>(0,0,-0.1)</drawOffset>
       <damageData>
         <rect>(0.2,0.2,0.6,0.6)</rect>
@@ -23,9 +23,9 @@
     <altitudeLayer>MoteOverheadLow</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
-    <size>(3,3)</size>
+    <size>(1,1)</size>
     <statBases>
-      <MaxHitPoints>380</MaxHitPoints>
+      <MaxHitPoints>190</MaxHitPoints>
       <Flammability>0.7</Flammability>
       <WorkToBuild>15000</WorkToBuild>
       <Mass>100</Mass>
@@ -41,8 +41,8 @@
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <building>
       <ai_combatDangerous>true</ai_combatDangerous>
-      <turretTopDrawSize>4</turretTopDrawSize>
-      <turretTopOffset>(0, 0.3)</turretTopOffset>
+      <turretTopDrawSize>1</turretTopDrawSize>
+      <turretTopOffset>(0, 0)</turretTopOffset>
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
@@ -60,19 +60,19 @@
     </comps>
   </ThingDef>
 
-  <ThingDef ParentName="OrbitalBeam">
-    <defName>OrbitalBeam_Turret</defName>
-    <label>Orbital Beam</label>
-    <description>Mechanoid Graser Beam reverse engineered into a powerful defensive turret able to set most targets ablaze with its focused energy beam.</description>
+  <ThingDef ParentName="SentryBeam">
+    <defName>SentryBeam_Turret</defName>
+    <label>Sentry Beam</label>
+    <description>Mechanoid Graser Beam put on with some duct tape onto a defensive turret, able to set most targets ablaze with its focused energy beam.</description>
     <uiIconPath>Things/Building/Security/OrbitalBeam_Icon</uiIconPath>
     <techLevel>Ultra</techLevel>
     <statBases>
       <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret> <!-- like level 8 human shooter -->
     </statBases>
     <costList>
-      <Steel>700</Steel>
-      <Plasteel>80</Plasteel>
-      <ComponentIndustrial>12</ComponentIndustrial>
+      <Steel>300</Steel>
+      <Plasteel>10</Plasteel>
+      <ComponentIndustrial>6</ComponentIndustrial>
       <ComponentSpacer>2</ComponentSpacer>
     </costList>
     <comps>
@@ -85,13 +85,13 @@
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>2000</basePowerConsumption>
+        <basePowerConsumption>1000</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
     </comps>
     <building>
-      <turretGunDef>Gun_OrbitalBeam</turretGunDef>
+      <turretGunDef>Gun_SentryBeam</turretGunDef>
       <turretBurstCooldownTime>1</turretBurstCooldownTime>
     </building>
     <designatorDropdown>GravShipCannons</designatorDropdown>
@@ -153,11 +153,11 @@
   </ThingDef>
 -->
 <ThingDef ParentName="BaseWeaponTurret">
-    <defName>Gun_OrbitalBeam</defName>
+    <defName>Gun_SentryBeam</defName>
     <label>GravShipCannon</label>
     <description>A self-loading large-bore cannon designed to attach to a turret.</description>
     <graphicData>
-      <texPath>Things/Building/Security/OrbitalBeam_Turret</texPath>
+      <texPath>Things/Building/Security/Beam_Sentry</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <statBases>
@@ -175,10 +175,10 @@
         <verbClass>Verb_ShootBeam</verbClass>
         <hasStandardCommand>true</hasStandardCommand>
         <warmupTime>1.0</warmupTime>
-        <range>50</range>
-        <minRange>5</minRange>
+        <range>30</range>
+        <minRange>0</minRange>
         <beamFullWidthRange>7</beamFullWidthRange>
-        <burstShotCount>5</burstShotCount>
+        <burstShotCount>3</burstShotCount>
         <showBurstShotStats>false</showBurstShotStats>
         <beamWidth>6</beamWidth>
         <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
