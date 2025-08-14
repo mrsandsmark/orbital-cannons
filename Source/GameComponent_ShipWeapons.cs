@@ -22,10 +22,8 @@ namespace Orbital_Cannons
 
         public void RegisterWeapon(CompRegisterWeapon weapon)    //If fits in category, add to list and set appropriate map
         {
-            ModLog.Log("Registering weapon");
             if(weapon.Props.isBeam)
             {
-                ModLog.Log("Registered beam weapon");
                 beamWeapons.Add(weapon.parent);
 
                 if(shipMap == null)

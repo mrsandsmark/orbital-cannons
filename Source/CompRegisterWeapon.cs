@@ -19,8 +19,6 @@ namespace Orbital_Cannons
         {
             base.PostSpawnSetup(respawningAfterLoad);
 
-            ModLog.Log("Weapon biome: " + parent.Map.Biome.defName);
-
             WeaponComp.RegisterWeapon(this);  //Register on spawn
 
             if(parent.Map.Biome == BiomeDefOf.Orbit)

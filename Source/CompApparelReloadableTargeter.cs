@@ -46,12 +46,12 @@ namespace Orbital_Cannons
                 {
                     if(WeaponComp.beamWeapons.NullOrEmpty())    //If weapon list is empty
                     {
-                        reason = "No beam weapons on ship.";
+                        reason = "OC_BeamNotFound".Translate();
                         return false;
                     }
                     if(!WeaponComp.beamWeapons.Any((Thing thing) => thing.TryGetComp<CompPowerTrader>().PowerOn))   //If no weapons have power
                     {
-                        reason = "No beam weapon online.";
+                        reason = "OC_BeamNotOnline".Translate();
                         return false;
                     }
                 }
@@ -59,12 +59,12 @@ namespace Orbital_Cannons
                 {
                     if(WeaponComp.bombardWeapons.NullOrEmpty())
                     {
-                        reason = "No bombardment weapons on ship.";
+                        reason = "OC_BombardmentNotFound".Translate();
                         return false;
                     }
                     if(!WeaponComp.bombardWeapons.Any((Thing thing) => thing.TryGetComp<CompPowerTrader>().PowerOn))
                     {
-                        reason = "No bombardment weapon online.";
+                        reason = "OC_BombardmentNotOnline".Translate();
                         return false;
                     }
                 }
@@ -72,25 +72,25 @@ namespace Orbital_Cannons
                 {
                     if(WeaponComp.antigrainWeapons.NullOrEmpty())
                     {
-                        reason = "No artillery weapons on ship.";
+                        reason = "OC_AntigrainNotFound".Translate();
                         return false;
                     }
                     if(!WeaponComp.antigrainWeapons.Any((Thing thing) => thing.TryGetComp<CompPowerTrader>().PowerOn))
                     {
-                        reason = "No artillery weapon online.";
+                        reason = "OC_AntigrainNotOnline".Translate();
                         return false;
                     }
                 }
 
                 if(!WeaponComp.inSpace) //If ship is not in space
                 {
-                    reason = "Ship not in orbit.";
+                    reason = "OC_ShipNotInSpace".Translate();
                     return false;
                 }
 
                 if(WeaponComp.shipMap == parent.MapHeld)    //If ship is on the same map
                 {
-                    reason = "Ship on same map as caller.";
+                    reason = "OC_ShipOnMap".Translate();
                     return false;
                 }
             }
