@@ -134,7 +134,7 @@ namespace Orbital_Cannons
                         }
                         Find.WindowStack.Add(new FloatMenu(list));
                     },
-                    icon = ContentFinder<Texture2D>.Get("UI/Icons/SelectBombardment"),  //Path to the icon of the gizmo
+                    icon = ContentFinder<Texture2D>.Get("UI/Icons/SelectWeapon"),  //Path to the icon of the gizmo
                 };
 
                 yield return CreateVerbTargetCommand(parent, selectedVerb); //Then make the actual gizmo for the bombardment (same as vanilla)

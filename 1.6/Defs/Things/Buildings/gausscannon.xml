@@ -19,7 +19,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>    
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <size>(9,9)</size>
@@ -161,7 +161,7 @@
         <defaultProjectile>Bullet_AntigrainGravship</defaultProjectile>
         <forcedMissRadius>1</forcedMissRadius>
         <warmupTime>5</warmupTime>
-        <minRange>30</minRange>
+        <minRange>17</minRange>
         <range>56</range>
         <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
         <burstShotCount>1</burstShotCount>

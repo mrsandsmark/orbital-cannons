@@ -2,7 +2,7 @@
 <Defs>
     <ThingDef ParentName="OrbitalStrikeBase">
         <defName>OC_AntigrainBombardment</defName>
-        <label>antigrain gravship bombardment</label>
+        <label>Gauss Cannon Strike</label>
         <thingClass>Orbital_Cannons.AntigrainBombardment</thingClass>
         <comps>
             <li Class="CompProperties_OrbitalBeam">

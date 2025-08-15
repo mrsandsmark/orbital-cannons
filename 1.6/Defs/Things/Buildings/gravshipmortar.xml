@@ -18,8 +18,7 @@
         <volume>(0.5,0.4,1.05)</volume>
       </shadowData>
     </graphicData>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <stealable>false</stealable>
@@ -27,9 +26,6 @@
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <fillPercent>0.4</fillPercent>
-    <thingCategories>
-      <li>BuildingsSecurity</li>
-    </thingCategories>
     <tickerType>Normal</tickerType>
     <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
     <designationCategory>Security</designationCategory>
@@ -167,6 +163,9 @@
     </verbs>
     <comps>
       <li Class="CompProperties_ChangeableProjectile" />
+      <li Class="Orbital_Cannons.CompProperties_RegisterWeapon">
+        <isBombardment>true</isBombardment>
+      </li>
     </comps>
     <building>
       <fixedStorageSettings>

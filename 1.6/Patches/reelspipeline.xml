@@ -5,7 +5,7 @@
   <li>Reel's Turret Pipeline</li>
 </mods>
   <match Class="PatchOperationReplace">
-    <xpath>Defs/ThingDef[defName="Turret_Gauss" or defName="Turret_GaussCannon" or defName="Turret_GaussCannonReal"] /comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs/li</xpath>
+    <xpath>Defs/ThingDef[defName="Turret_Gauss" or defName="Turret_GaussCannon" or defName="Turret_GaussCannonReal" or defName="Turret_Sentry" or defName="Turret_BigSentry"] /comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs/li</xpath>
     <value>
         <li>ReelTurretAmmo</li>
     </value>

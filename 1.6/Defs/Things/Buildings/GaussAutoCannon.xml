@@ -19,7 +19,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>    
-    <altitudeLayer>Building</altitudeLayer>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <size>(3,3)</size>
@@ -102,9 +102,6 @@
         <factorByDifficulty>true</factorByDifficulty>
         <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
         <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
-      </li>
-      <li Class="Orbital_Cannons.CompProperties_RegisterWeapon">
-        <isBombardment>true</isBombardment>
       </li>
     </comps>
     <building>

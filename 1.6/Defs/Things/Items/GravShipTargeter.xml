@@ -99,7 +99,7 @@
       </li>
       <li>
         <verbClass>Verb_Bombardment</verbClass>
-        <label>Gravship bombardment</label>
+        <label>Gravship Artillery Barrage</label>
         <hasStandardCommand>true</hasStandardCommand>
         <useableInPocketMaps>false</useableInPocketMaps>
         <warmupTime>3</warmupTime>
@@ -116,7 +116,7 @@
       </li>
       <li>
         <verbClass>Orbital_Cannons.Verb_AntigrainBombardment</verbClass>
-        <label>Gravship antigrain strike</label>
+        <label>Gravship Gauss Cannon strike</label>
         <hasStandardCommand>true</hasStandardCommand>
         <useableInPocketMaps>false</useableInPocketMaps>
         <warmupTime>3</warmupTime>
@@ -150,6 +150,23 @@
         <antigrainVerb>Orbital_Cannons.Verb_AntigrainBombardment</antigrainVerb>
       </li>
     </modExtensions>
+    <recipeMaker>
+      <researchPrerequisite>GravShipResearch</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>7</Crafting>
+      </skillRequirements>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+      <displayPriority>200</displayPriority>
+    </recipeMaker>
+    <costList>
+      <Plasteel>25</Plasteel>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
   </ThingDef>
 
 <!--
