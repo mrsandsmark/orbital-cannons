@@ -52,12 +52,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntigrainBombardment.cs" />
+    <Compile Include="BombardmentExtension.cs" />
+    <Compile Include="CompApparelReloadableTargeter.cs" />
+    <Compile Include="CompProperties_RegisterWeapon.cs" />
+    <Compile Include="CompRegisterWeapon.cs" />
     <Compile Include="DefEditGC.cs" />
+    <Compile Include="GameComponent_ShipWeapons.cs" />
+    <Compile Include="ModLog.cs" />
     <Compile Include="OCDefOfs.cs" />
     <Compile Include="ModSettings.cs" />
     <Compile Include="OrbitalCannonSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsWidgets.cs" />
+    <Compile Include="Verb_AntigrainBombardment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -163,6 +163,9 @@
     </verbs>
     <comps>
       <li Class="CompProperties_ChangeableProjectile" />
+      <li Class="Orbital_Cannons.CompProperties_RegisterWeapon">
+        <isBombardment>true</isBombardment>
+      </li>
     </comps>
     <building>
       <fixedStorageSettings>
