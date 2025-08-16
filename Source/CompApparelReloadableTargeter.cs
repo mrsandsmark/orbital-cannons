@@ -117,6 +117,11 @@ namespace Orbital_Cannons
                 yield break;
             }
 
+            if(selectedVerb == null)
+            {
+                selectedVerb = VerbTracker.AllVerbs.First();
+            }
+
             if(VerbTracker.AllVerbs.Count > 1)  //If there is more than one verb
             {
                 yield return new Command_Action //New gizmo ...
@@ -143,6 +148,12 @@ namespace Orbital_Cannons
             {
                 yield return CreateVerbTargetCommand(parent, selectedVerb);
             }
+        }
+
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+            Scribe_References.Look(ref selectedVerb, "selectedVerb");
         }
 
         private Command_VerbTarget CreateVerbTargetCommand(Thing gear, Verb verb)
