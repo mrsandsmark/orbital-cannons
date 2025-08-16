@@ -5,11 +5,21 @@
 	<author>Mr.Wireman</author>
     <packageId>mrwireman.gausscannon.dev</packageId>
 	<supportedVersions>
-	<li>1.6</li>
+		<li>1.6</li>
 	</supportedVersions>
 	<modVersion IgnoreIfNoMatchingField="True">2.0</modVersion>
+	<modDependencies>
+		<li>
+			<packageId>Ludeon.RimWorld.Odyssey</packageId>
+			<displayName>Odyssey</displayName>
+		</li>
+	</modDependencies>
 	<description>This mod takes the model used for the orbital defence cannons and makes them buildable on your gravship in a smaller scale
 	</description>
+	<loadAfter>
+		<li>Ludeon.RimWorld</li>
+		<li>Ludeon.RimWorld.Odyssey</li>
+	</loadAfter>
 </ModMetaData>
  
  
